@@ -14,6 +14,7 @@ func init() {
 	totalNumberOfWords = len(wordsList)
 }
 
+// GenerateNextWord picks up a random a word from the list of words
 func GenerateNextWord() string {
 	return wordsList[rand.Intn(totalNumberOfWords)] + " "
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
 	"os"
@@ -10,28 +11,21 @@ import (
 )
 
 func main() {
-	channel := make(chan string)
-	defer close(channel)
 	sizePtr := flag.String("size", "1MB", "Size of generated random text")
 	typePtr := flag.String("type", "chars", "Type of text to be generated - chars, words")
 	flag.Parse()
 	size := parseSize(sizePtr)
 	generator := parseType(typePtr)
-	go generateAndSendToChannel(generator, channel)
-	channelToStdout(channel, size)
+	generate(generator, size)
 }
 
-func generateAndSendToChannel(generator func() string, channel chan<- string) {
-	for {
-		channel <- generator()
-	}
-}
-
-func channelToStdout(reader <-chan string, totalSize int) {
+func generate(generator func() string, totalSize int) {
+	f := bufio.NewWriter(os.Stdout)
+	defer f.Flush()
 	bytesSent := 0
 	for bytesSent < totalSize {
-		content := <-reader
-		fmt.Print(content)
+		content := generator()
+		f.WriteString(content)
 		bytesSent += len(content)
 	}
 }
