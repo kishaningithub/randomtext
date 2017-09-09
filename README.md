@@ -11,6 +11,16 @@ Command line random text generator (Development in progress)
   randomtext --size=1TB
  ```
 
+To generate content with valid random words. 
+
+```bash
+
+  randomtext --type=words
+
+```
+
+_Source of [words](https://github.com/dwyl/english-words)_
+
 ## Use case
 
  Testing the capacity of code editors/IDEs
