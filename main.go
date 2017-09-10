@@ -25,8 +25,8 @@ func generate(generator func() string, totalSize int) {
 	bytesSent := 0
 	for bytesSent < totalSize {
 		content := generator()
-		f.WriteString(content)
-		bytesSent += len(content)
+		noOfBytesWritten, _ := f.WriteString(content)
+		bytesSent += noOfBytesWritten
 	}
 }
 
