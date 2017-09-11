@@ -19,6 +19,14 @@ To generate content with valid random words.
 
 ```
 
+To generate zeros
+
+```bash
+
+ randomtext --type=zeros
+
+ ```
+
 _Source of [words](https://github.com/dwyl/english-words)_
 
 ## Use case
@@ -29,7 +37,6 @@ _Source of [words](https://github.com/dwyl/english-words)_
 
 With the [Go compiler](https://golang.org/dl/) installed, run:
 
-`go get github.com/kishaningithub/randomtext`
+`go get github.com/kishaningithub/randomtext/...`
 
 The `randomtext` command will now be compiled and located in `$GOPATH/bin`
-

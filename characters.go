@@ -1,12 +1,16 @@
-package main
+package randomtext
 
 import "math/rand"
 
-const total = 89
+// CharGenerator generates random charectors
+type CharGenerator struct {
+}
 
 var allCharacters = []string{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "=", "_", "+", ",", ".", "/", ";", "'", "[", "]", "<", ">", "?", ":", "{", "}"}
 
-// GenerateNextChar picks up a random character from all characters
-func GenerateNextChar() string {
+const total = 89
+
+// Generate picks up a random character from all characters
+func (f CharGenerator) Generate() string {
 	return allCharacters[rand.Intn(total)]
 }

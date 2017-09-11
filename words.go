@@ -1,10 +1,14 @@
-package main
+package randomtext
 
 import (
 	"bufio"
 	"math/rand"
 	"os"
 )
+
+// WordGenerator returns random words
+type WordGenerator struct {
+}
 
 var wordsList []string
 var totalNumberOfWords int
@@ -14,8 +18,8 @@ func init() {
 	totalNumberOfWords = len(wordsList)
 }
 
-// GenerateNextWord picks up a random a word from the list of words
-func GenerateNextWord() string {
+// Generate geneates random words
+func (w WordGenerator) Generate() string {
 	return wordsList[rand.Intn(totalNumberOfWords)] + " "
 }
 
