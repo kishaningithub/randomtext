@@ -16,8 +16,5 @@
 # Generated Text files for test
 *.txt
 
-# Generated Binaries
-randomtext
-
 # Mac files
 .DS_Store
