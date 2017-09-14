@@ -5,20 +5,15 @@ import (
 	"os"
 )
 
-// Generator generates randome text text
-//
-// Implementations can generage subsets of random text
-type Generator interface {
-	Generate() string
-}
+//go:generate go-bindata -pkg $GOPACKAGE -o assets.go assets/
 
 // Generate text of given type for a given size
-func Generate(sizeInBytes int, generator Generator) {
+func Generate(sizeInBytes int, generate func() string) {
 	f := bufio.NewWriter(os.Stdout)
 	defer f.Flush()
 	bytesSent := 0
 	for bytesSent < sizeInBytes {
-		content := generator.Generate()
+		content := generate()
 		noOfBytesWritten, _ := f.WriteString(content)
 		bytesSent += noOfBytesWritten
 	}

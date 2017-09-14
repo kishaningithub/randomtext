@@ -1,10 +1,8 @@
 package randomtext
 
-// ZeroGenerator generates zeros
-type ZeroGenerator struct {
-}
-
-// Generate generates zeros
-func (z ZeroGenerator) Generate() string {
-	return "0"
+// ZeroGenerator returns a function that generates zeros
+func ZeroGenerator() func() string {
+	return func() string {
+		return "0"
+	}
 }

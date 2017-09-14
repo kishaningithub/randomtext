@@ -37,6 +37,17 @@ _Source of [words](https://github.com/dwyl/english-words)_
 
 With the [Go compiler](https://golang.org/dl/) installed, run:
 
-`go get github.com/kishaningithub/randomtext/...`
+`go get -u github.com/kishaningithub/randomtext/...`
 
 The `randomtext` command will now be compiled and located in `$GOPATH/bin`
+
+## Development
+
+To build
+
+```bash
+
+go generate -x .
+go install -v ./...
+
+```

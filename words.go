@@ -1,38 +1,22 @@
 package randomtext
 
 import (
-	"bufio"
+	"fmt"
+	"strings"
 	"math/rand"
-	"os"
 )
 
 // WordGenerator returns random words
-type WordGenerator struct {
-}
-
-var wordsList []string
-var totalNumberOfWords int
-
-func init() {
-	wordsList, _ = readWordsList()
-	totalNumberOfWords = len(wordsList)
-}
-
-// Generate geneates random words
-func (w WordGenerator) Generate() string {
-	return wordsList[rand.Intn(totalNumberOfWords)] + " "
-}
-
-func readWordsList() ([]string, error) {
-	file, err := os.Open("words.list")
+func WordGenerator() func() string {
+	data, err := Asset("assets/words.list")
+	fmt.Println("err", err)
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
-	defer file.Close()
-	var lines []string
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
+	wordsStr := string(data)
+	wordsList := strings.Split(wordsStr, "\n")
+	totalNumberOfWords := len(wordsList)
+	return func() string {
+		return wordsList[rand.Intn(totalNumberOfWords)]
 	}
-	return lines, scanner.Err()
 }

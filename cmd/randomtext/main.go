@@ -31,19 +31,19 @@ func parseSize(sizePtr string) int {
 	} else if strings.Contains(sizePtr, "GB") {
 		sizeInBytes = givenSize * 1024 * 1024 * 1024
 	} else if strings.Contains(sizePtr, "TB") {
-		sizeInBytes = givenSize * 1024 * 1024 * 1024
+		sizeInBytes = givenSize * 1024 * 1024 * 1024 * 1024
 	}
 	return sizeInBytes
 }
 
-func parseType(typeStr string) randomtext.Generator {
+func parseType(typeStr string) func() string {
 	switch typeStr {
 	case "chars":
-		return randomtext.CharGenerator{}
+		return randomtext.CharGenerator()
 	case "words":
-		return randomtext.WordGenerator{}
+		return randomtext.WordGenerator()
 	case "zeros":
-		return randomtext.ZeroGenerator{}
+		return randomtext.ZeroGenerator()
 	default:
 		fmt.Print("Not a valid value")
 		os.Exit(1)
