@@ -17,6 +17,6 @@ func WordGenerator() func() string {
 	wordsList := strings.Split(wordsStr, "\n")
 	totalNumberOfWords := len(wordsList)
 	return func() string {
-		return wordsList[rand.Intn(totalNumberOfWords)]
+		return wordsList[rand.Intn(totalNumberOfWords)] + "\n"
 	}
 }
