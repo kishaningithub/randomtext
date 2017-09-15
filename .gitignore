@@ -21,3 +21,6 @@
 
 # Assets
 assets.go
+
+# Deps
+vendor/*
