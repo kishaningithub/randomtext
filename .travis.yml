@@ -1,0 +1,9 @@
+language: go
+go:
+  - 1.9.x
+install:
+  - 'curl https://glide.sh/get | sh'
+  - glide install
+script:
+  - go generate -x .
+  - go test -v ./...

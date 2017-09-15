@@ -1,0 +1,8 @@
+hash: aef66a37930bc047233deba76c4d86f793e89d6bbb2d192176dac3bb20edd100
+updated: 2017-09-14T22:26:35.871892061+05:30
+imports:
+- name: github.com/jteeuwen/go-bindata
+  version: bbd0c6e271208dce66d8fda4bc536453cd27fc4a
+  subpackages:
+  - '...'
+testImports: []
