@@ -12,8 +12,8 @@ import (
 )
 
 func main() {
-	sizePtr := flag.String("size", "1MB", "Size of generated random text")
-	typePtr := flag.String("type", "chars", "Type of text to be generated - chars, words")
+	sizePtr := flag.String("size", "1MB", "Size of generated random text in KB, MB, GB, TB")
+	typePtr := flag.String("type", "chars", "Type of text to be generated - chars, words, zeros")
 	flag.Parse()
 	sizeInBytes := parseSize(*sizePtr)
 	generator := parseType(*typePtr)

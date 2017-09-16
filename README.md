@@ -10,30 +10,25 @@ Command line random text generator
 
 ## Usage
 
-```bash
-  randomtext --size=1KB
-  randomtext --size=1MB
-  randomtext --size=1GB
-  randomtext --size=1TB
- ```
-
-To generate content with valid random words. 
-
-```bash
-
-  randomtext --type=words
-
+```zsh
+➜  randomtext git:(master) randomtext -h
+Usage of randomtext:
+  -size string
+        Size of generated random text in KB, MB, GB, TB (default "1MB")
+  -type string
+        Type of text to be generated - chars, words, zeros (default "chars")
 ```
 
-To generate zeros
+### Examples
 
-```bash
+- Generate 1 KB random charecters
+  - `randomtext --size=1KB | pv > output.txt`
+- Generate 100MB random words
+  - `randomtext --size=100MB | pv > output.txt`
+- Generate 1GB of zeros
+  - `randomtext --size=1GB --type=zeros | pv > output.txt`
 
- randomtext --type=zeros
-
- ```
-
-_Source of [words](https://github.com/dwyl/english-words)_
+Source of [words](https://github.com/dwyl/english-words). The above commands use [pv](https://www.ivarch.com/programs/pv.shtml) for pipeline visualization only.
 
 ## Use case
 
@@ -41,11 +36,13 @@ _Source of [words](https://github.com/dwyl/english-words)_
 
 ## Installation
 
-With the [Go compiler](https://golang.org/dl/) installed, run:
+Prebuilt binaries for Intel 64-bit architecture are available for
 
-`go get -u github.com/kishaningithub/randomtext/...`
+- [Linux](https://github.com/kishaningithub/randomtext/releases/download/v1.0.0/randomtext_1.0.0_linux_amd64.tar.gz)
+- [Mac OS](https://github.com/kishaningithub/randomtext/releases/download/v1.0.0/randomtext_1.0.0_darwin_amd64.tar.gz)
+- [Windows](https://github.com/kishaningithub/randomtext/releases/download/v1.0.0/randomtext_1.0.0_windows_amd64.tar.gz)
 
-The `randomtext` command will now be compiled and located in `$GOPATH/bin`
+Extract and add the binary in your `$PATH`
 
 ## Development
 
@@ -53,7 +50,10 @@ To build
 
 ```bash
 
+glide install
+go install -v ./vendor/github.com/jteeuwen/go-bindata/...
 go generate -x .
 go install -v ./...
+randomtext
 
 ```
