@@ -1,10 +1,15 @@
 language: go
 go:
-  - 1.9.x
+- 1.9.x
+env:
+  global:
+    - secure: "HETNsmVAn05zZmPdhMBcs+0VyMVKu4hBw+ppfH0gkWdSm+1a4q17El4NqF8cw4SHdXbv0g4PHxX8Dx00D7OMAemUFXWizETbuuQnO9Ln6W9wGycUCX97O0EKbopCNCTPHp1lolqEjrY53XAZDwVym1qb1X8AT648yVdFwt6UboMEx5VyFBEbNTEeJXcBIXsxtgnEDeFmHWI0ZVXRBzyK0SB2RH2Uywxb8n0avMiYxMejTMYt92FszQYkoTbzbcnYGnaYsNRvo+5sziS1m6WvutW4j5wydvQA8pe0JwCIZ1XFSA7WxMXOVVKJKeO5RAkKnNU8Z7OqPZcq3Z86/XpCE9ldUi1y7A/TkMyGyjVXPt2pzAq6tb3/nkBy2bU2MuNmEyiYMs8XbJV7A2kkgezJfsydgPgjDDc3kgFngJGnME8GkwnzySJRwDls721ErC8LYm6F7HksjHBYGvn7yFZNpbSCKRyCEQuuVsKVLSJKAw7x796cMIDIesWZQv9cF3niZIUNCKQGPXLYSQwF//76ko2X6YEBRHnS1psOLi9hb2iIdGybkXiK+J11OCYjBW3/sAojcOFQ8CJbJIZPt7/IJlEhB8MnUNXQDwPhX5EPuOhTE4sk3IKTBbACVzI3UqGBn9c0nafwE86RKU3Ou2BeEoT7Mvz41WXU3Uc4s+JEGB8="
 install:
-  - 'curl https://glide.sh/get | sh'
-  - glide install
-  - go install -v ./vendor/github.com/jteeuwen/go-bindata/...
+- curl https://glide.sh/get | sh
+- glide install
+- go install -v ./vendor/github.com/jteeuwen/go-bindata/...
 script:
-  - go generate -x .
-  - go test -v ./...
+- go generate -x .
+- go test -v ./...
+after_success:
+- test -n "$TRAVIS_TAG" && curl -sL https://git.io/goreleaser | bash
