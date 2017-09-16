@@ -10,8 +10,8 @@ Command line random text generator
 
 ## Usage
 
-```zsh
-➜  randomtext git:(master) randomtext -h
+```bash
+$ randomtext -h
 Usage of randomtext:
   -size string
         Size of generated random text in KB, MB, GB, TB (default "1MB")
@@ -24,7 +24,7 @@ Usage of randomtext:
 - Generate 1 KB random charecters
   - `randomtext --size=1KB | pv > output.txt`
 - Generate 100MB random words
-  - `randomtext --size=100MB | pv > output.txt`
+  - `randomtext --size=100MB --type=words | pv > output.txt`
 - Generate 1GB of zeros
   - `randomtext --size=1GB --type=zeros | pv > output.txt`
 
@@ -49,11 +49,9 @@ Extract and add the binary in your `$PATH`
 To build
 
 ```bash
-
 glide install
 go install -v ./vendor/github.com/jteeuwen/go-bindata/...
 go generate -x .
 go install -v ./...
 randomtext
-
 ```
