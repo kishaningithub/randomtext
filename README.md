@@ -1,4 +1,6 @@
-# Randomtext 
+# Randomtext
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/kishaningithub/randomtext)](https://goreportcard.com/report/github.com/kishaningithub/randomtext)
 
 Command line random text generator (Development in progress)
 

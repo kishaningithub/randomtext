@@ -2,8 +2,8 @@ package randomtext
 
 import (
 	"fmt"
-	"strings"
 	"math/rand"
+	"strings"
 )
 
 // WordGenerator returns random words
