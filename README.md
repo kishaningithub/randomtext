@@ -1,5 +1,6 @@
 # Randomtext
 
+[![Build Status](https://travis-ci.org/kishaningithub/randomtext.svg?branch=master)](https://travis-ci.org/kishaningithub/randomtext)
 [![Go Doc](https://godoc.org/github.com/kishaningithub/randomtext?status.svg)](https://godoc.org/github.com/kishaningithub/randomtext)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kishaningithub/randomtext)](https://goreportcard.com/report/github.com/kishaningithub/randomtext)
 
