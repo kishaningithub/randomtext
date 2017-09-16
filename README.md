@@ -4,7 +4,7 @@
 [![Go Doc](https://godoc.org/github.com/kishaningithub/randomtext?status.svg)](https://godoc.org/github.com/kishaningithub/randomtext)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kishaningithub/randomtext)](https://goreportcard.com/report/github.com/kishaningithub/randomtext)
 
-Command line random text generator (Development in progress)
+Command line random text generator
 
 ## Usage
 
