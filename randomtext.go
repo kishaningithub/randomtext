@@ -22,7 +22,10 @@ func Generate(sizeInBytes int, generate func() string, writer io.Writer) {
 
 func randomGenerator(sourceData []string) func() string {
 	sourceDataSize := len(sourceData)
+	randomArrayIndexes := rand.Perm(sourceDataSize)
+	i := -1
 	return func() string {
-		return sourceData[rand.Intn(sourceDataSize)]
+		i = (i + 1) % sourceDataSize
+		return sourceData[randomArrayIndexes[i]]
 	}
 }
