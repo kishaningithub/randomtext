@@ -17,7 +17,7 @@ func main() {
 	flag.Parse()
 	sizeInBytes := parseSize(*sizePtr)
 	generator := parseType(*typePtr)
-	randomtext.Generate(sizeInBytes, generator)
+	randomtext.Generate(sizeInBytes, generator, os.Stdout)
 }
 
 func parseSize(sizePtr string) int {

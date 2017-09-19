@@ -1,22 +1,15 @@
 package randomtext
 
 import (
-	"fmt"
-	"math/rand"
 	"strings"
 )
 
 // WordGenerator returns random words
 func WordGenerator() func() string {
 	data, err := Asset("assets/words.list")
-	fmt.Println("err", err)
 	if err != nil {
 		panic(err)
 	}
-	wordsStr := string(data)
-	wordsList := strings.Split(wordsStr, "\n")
-	totalNumberOfWords := len(wordsList)
-	return func() string {
-		return wordsList[rand.Intn(totalNumberOfWords)] + "\n"
-	}
+	wordsList := strings.Split(string(data), "\n")
+	return randomGenerator(wordsList)
 }
