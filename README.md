@@ -21,7 +21,7 @@ Usage of randomtext:
 
 ### Examples
 
-- Generate 1 KB random charecters
+- Generate 1 KB random characters
   - `randomtext --size=1KB | pv > output.txt`
 - Generate 100MB random words
   - `randomtext --size=100MB --type=words | pv > output.txt`
@@ -30,9 +30,10 @@ Usage of randomtext:
 
 Source of [words](https://github.com/dwyl/english-words). The above commands use [pv](https://www.ivarch.com/programs/pv.shtml) for pipeline visualization only.
 
-## Use case
+## Use cases
 
- Testing the capacity of code editors/IDEs
+- Testing the capacity of code editors/IDEs
+- Generate logs to generate load for log forwarders like [fluent bit](https://github.com/fluent/fluent-bit)
 
 ## Installation
 
