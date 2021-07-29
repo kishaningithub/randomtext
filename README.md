@@ -46,9 +46,9 @@ $ brew install kishaningithub/tap/randomtext
 ## Other platforms
 Prebuilt binaries for Intel 64-bit architecture are available for
 
-- [Linux](https://github.com/kishaningithub/randomtext/releases/download/v1.0.0/randomtext_1.0.0_linux_amd64.tar.gz)
-- [Mac OS](https://github.com/kishaningithub/randomtext/releases/download/v1.0.0/randomtext_1.0.0_darwin_amd64.tar.gz)
-- [Windows](https://github.com/kishaningithub/randomtext/releases/download/v1.0.0/randomtext_1.0.0_windows_amd64.tar.gz)
+- [Linux](https://github.com/kishaningithub/randomtext/releases/download/v1.0.1/randomtext_1.0.1_linux_amd64.tar.gz)
+- [Mac OS](https://github.com/kishaningithub/randomtext/releases/download/v1.0.1/randomtext_1.0.1_darwin_amd64.tar.gz)
+- [Windows](https://github.com/kishaningithub/randomtext/releases/download/v1.0.1/randomtext_1.0.1_windows_amd64.tar.gz)
 
 Extract and add the binary in your `$PATH`
 
