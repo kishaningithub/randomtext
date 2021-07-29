@@ -57,9 +57,5 @@ Extract and add the binary in your `$PATH`
 To build
 
 ```bash
-glide install
-go install -v ./vendor/github.com/jteeuwen/go-bindata/...
-go generate -x .
-go install -v ./...
-randomtext
+make build
 ```
