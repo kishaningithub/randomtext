@@ -6,8 +6,6 @@ import (
 	"math/rand"
 )
 
-//go:generate go-bindata -pkg $GOPACKAGE -o assets.go assets/
-
 // Generate text of given type for a given size and writes it to the given writer
 func Generate(sizeInBytes int, generate func() string, writer io.Writer) {
 	bufferedWriter := bufio.NewWriter(writer)

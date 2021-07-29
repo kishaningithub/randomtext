@@ -1,7 +1,7 @@
 # Randomtext
 
-[![Build Status](https://travis-ci.org/kishaningithub/randomtext.svg?branch=master)](https://travis-ci.org/kishaningithub/randomtext)
-[![Go Doc](https://godoc.org/github.com/kishaningithub/randomtext?status.svg)](https://godoc.org/github.com/kishaningithub/randomtext)
+[![Build Status](https://github.com/kishaningithub/kafka-perf/actions/workflows/build.yml/badge.svg)](https://github.com/kishaningithub/randomtext/actions/workflows/build.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/kishaningithub/randomtext.svg)](https://pkg.go.dev/github.com/kishaningithub/randomtext)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kishaningithub/randomtext)](https://goreportcard.com/report/github.com/kishaningithub/randomtext)
 [![Downloads](https://img.shields.io/github/downloads/kishaningithub/randomtext/latest/total.svg)](https://github.com/kishaningithub/randomtext/releases)
 [![Latest release](https://img.shields.io/github/release/kishaningithub/randomtext.svg)](https://github.com/kishaningithub/randomtext/releases)
@@ -36,6 +36,13 @@ Source of [words](https://github.com/dwyl/english-words). The above commands use
 
 ## Installation
 
+## Mac OSX
+
+```shell
+$ brew install kishaningithub/tap/randomtext
+```
+
+## Other platforms
 Prebuilt binaries for Intel 64-bit architecture are available for
 
 - [Linux](https://github.com/kishaningithub/randomtext/releases/download/v1.0.0/randomtext_1.0.0_linux_amd64.tar.gz)

@@ -5,17 +5,14 @@ import (
 	"testing"
 
 	"github.com/kishaningithub/randomtext"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
-func TestCharGeneratorShouldGenerateRandomCharecters(t *testing.T) {
-	assert := assert.New(t)
+func TestCharGeneratorShouldGenerateRandomCharacters(t *testing.T) {
 	require := require.New(t)
-	wordsByteArr, err := randomtext.Asset("assets/charecters.list")
-	require.Nil(err)
-	expectedCharecters := strings.Split(string(wordsByteArr), "\n")
+	expectedCharacters := strings.Split(randomtext.Characters, "\n")
 
 	generator := randomtext.CharGenerator()
-	assert.Contains(expectedCharecters, generator())
+
+	require.Contains(expectedCharacters, generator())
 }

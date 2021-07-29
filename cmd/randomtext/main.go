@@ -3,12 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/kishaningithub/randomtext"
 	"os"
 	"regexp"
 	"strconv"
 	"strings"
-
-	"github.com/kishaningithub/randomtext"
 )
 
 func main() {

@@ -1,15 +1,15 @@
 package randomtext
 
 import (
+	_ "embed"
 	"strings"
 )
 
+//go:embed assets/words.list
+var Words string
+
 // WordGenerator returns random words
 func WordGenerator() func() string {
-	data, err := Asset("assets/words.list")
-	if err != nil {
-		panic(err)
-	}
-	wordsList := strings.Split(string(data), "\n")
+	wordsList := strings.Split(Words, "\n")
 	return randomGenerator(wordsList)
 }

@@ -1,3 +1,14 @@
+project_name: randomtext
+
+release:
+  github:
+    owner: kishaningithub
+    name: randomtext
+
+before:
+  hooks:
+    - go mod download
+
 builds:
   - main: ./cmd/randomtext/main.go
     binary: randomtext
@@ -7,3 +18,14 @@ builds:
       - linux
     goarch:
       - amd64
+      - arm64
+
+brews:
+  - name: randomtext
+    tap:
+      owner: kishaningithub
+      name: homebrew-tap
+    url_template: "https://github.com/kishaningithub/randomtext/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    folder: Formula
+    homepage: "https://github.com/kishaningithub/randomtext"
+    description: "Command line random text generator"
