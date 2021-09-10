@@ -14,22 +14,22 @@ func main() {
 	sizePtr := flag.String("size", "1MB", "Size of generated random text in KB, MB, GB, TB")
 	typePtr := flag.String("type", "chars", "Type of text to be generated - chars, words, zeros")
 	flag.Parse()
-	sizeInBytes := parseSize(*sizePtr)
-	generator := parseType(*typePtr)
+	sizeInBytes := parseSize(strings.ToLower(*sizePtr))
+	generator := parseType(strings.ToLower(*typePtr))
 	randomtext.Generate(sizeInBytes, generator, os.Stdout)
 }
 
-func parseSize(sizePtr string) int {
+func parseSize(size string) int {
 	reg := regexp.MustCompile("\\d+")
-	givenSize, _ := strconv.Atoi(reg.FindString(sizePtr))
+	givenSize, _ := strconv.Atoi(reg.FindString(size))
 	sizeInBytes := 1
-	if strings.Contains(sizePtr, "KB") {
+	if strings.Contains(size, "kb") {
 		sizeInBytes = givenSize * 1024
-	} else if strings.Contains(sizePtr, "MB") {
+	} else if strings.Contains(size, "mb") {
 		sizeInBytes = givenSize * 1024 * 1024
-	} else if strings.Contains(sizePtr, "GB") {
+	} else if strings.Contains(size, "gb") {
 		sizeInBytes = givenSize * 1024 * 1024 * 1024
-	} else if strings.Contains(sizePtr, "TB") {
+	} else if strings.Contains(size, "tb") {
 		sizeInBytes = givenSize * 1024 * 1024 * 1024 * 1024
 	}
 	return sizeInBytes
