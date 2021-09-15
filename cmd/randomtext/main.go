@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"github.com/kishaningithub/randomtext"
@@ -14,38 +15,50 @@ func main() {
 	sizePtr := flag.String("size", "1MB", "Size of generated random text in KB, MB, GB, TB")
 	typePtr := flag.String("type", "chars", "Type of text to be generated - chars, words, zeros")
 	flag.Parse()
-	sizeInBytes := parseSize(strings.ToLower(*sizePtr))
-	generator := parseType(strings.ToLower(*typePtr))
+	sizeInBytes, err := parseSize(strings.ToLower(*sizePtr))
+	handleErr(err)
+	generator, err := parseType(strings.ToLower(*typePtr))
+	handleErr(err)
 	randomtext.Generate(sizeInBytes, generator, os.Stdout)
 }
 
-func parseSize(size string) int {
-	reg := regexp.MustCompile("\\d+")
-	givenSize, _ := strconv.Atoi(reg.FindString(size))
-	sizeInBytes := 1
-	if strings.Contains(size, "kb") {
-		sizeInBytes = givenSize * 1024
-	} else if strings.Contains(size, "mb") {
-		sizeInBytes = givenSize * 1024 * 1024
-	} else if strings.Contains(size, "gb") {
-		sizeInBytes = givenSize * 1024 * 1024 * 1024
-	} else if strings.Contains(size, "tb") {
-		sizeInBytes = givenSize * 1024 * 1024 * 1024 * 1024
-	}
-	return sizeInBytes
-}
-
-func parseType(typeStr string) func() string {
-	switch typeStr {
-	case "chars":
-		return randomtext.CharGenerator()
-	case "words":
-		return randomtext.WordGenerator()
-	case "zeros":
-		return randomtext.ZeroGenerator()
-	default:
-		fmt.Print("Not a valid value")
+func handleErr(err error) {
+	if err != nil {
+		fmt.Println(err)
 		os.Exit(1)
 	}
-	return nil
+}
+
+func parseSize(size string) (int, error) {
+	reg := regexp.MustCompile("\\d+")
+	givenSize, err := strconv.Atoi(reg.FindString(size))
+	if err != nil {
+		return 0, errors.New("invalid size")
+	}
+	if strings.Contains(size, "kb") {
+		return givenSize * 1024, nil
+	}
+	if strings.Contains(size, "mb") {
+		return givenSize * 1024 * 1024, nil
+	}
+	if strings.Contains(size, "gb") {
+		return givenSize * 1024 * 1024 * 1024, nil
+	}
+	if strings.Contains(size, "tb") {
+		return givenSize * 1024 * 1024 * 1024 * 1024, nil
+	}
+	return givenSize, nil
+}
+
+func parseType(typeStr string) (func() string, error) {
+	switch typeStr {
+	case "chars":
+		return randomtext.CharGenerator(), nil
+	case "words":
+		return randomtext.WordGenerator(), nil
+	case "zeros":
+		return randomtext.ZeroGenerator(), nil
+	default:
+		return nil, errors.New("not a valid value")
+	}
 }
