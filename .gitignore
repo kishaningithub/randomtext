@@ -27,3 +27,6 @@ assets.go
 
 # Deps
 vendor/*
+
+# Pprof files
+*.pprof

@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/kishaningithub/randomtext"
+	"github.com/pkg/profile"
 	"os"
 	"regexp"
 	"strconv"
@@ -14,7 +15,15 @@ import (
 func main() {
 	sizePtr := flag.String("size", "1MB", "Size of generated random text in KB, MB, GB, TB")
 	typePtr := flag.String("type", "chars", "Type of text to be generated - chars, words, zeros")
+	profileTypePtr := flag.String("profile", "", "Type of profile - cpu,mem")
 	flag.Parse()
+	profileType := *profileTypePtr
+	switch profileType {
+	case "cpu":
+		defer profile.Start(profile.ProfilePath(".")).Stop()
+	case "mem":
+		defer profile.Start(profile.ProfilePath("."), profile.MemProfile).Stop()
+	}
 	sizeInBytes, err := parseSize(strings.ToLower(*sizePtr))
 	handleErr(err)
 	generator, err := parseType(strings.ToLower(*typePtr))
