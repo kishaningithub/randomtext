@@ -13,10 +13,12 @@ Command line random text generator
 ```bash
 $ randomtext -h
 Usage of randomtext:
+  -profile string
+    	Type of profile - cpu,mem
   -size string
-        Size of generated random text in KB, MB, GB, TB (default "1MB")
+    	Size of generated random text in KB, MB, GB, TB (default "1MB")
   -type string
-        Type of text to be generated - chars, words, zeros (default "chars")
+    	Type of text to be generated - chars, words, zeros (default "chars")
 ```
 
 ### Examples
