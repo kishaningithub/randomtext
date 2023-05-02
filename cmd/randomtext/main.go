@@ -39,7 +39,7 @@ func handleErr(err error) {
 }
 
 func parseSize(size string) (int, error) {
-	reg := regexp.MustCompile("\\d+")
+	reg := regexp.MustCompile(`\d+`)
 	givenSize, err := strconv.Atoi(reg.FindString(size))
 	if err != nil {
 		return 0, errors.New("invalid size")

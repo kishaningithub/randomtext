@@ -1,3 +1,5 @@
+include .bingo/Variables.mk
+
 HOSTOS=$(shell uname | tr "[:upper:]" "[:lower:]")
 VERSION=$(shell git tag --sort=-version:refname | head -n 1)
 
@@ -33,8 +35,12 @@ unit-test:
 dependency-check: ## Ensure dependencies have no vulnerabilities
 	go list -json -m all | $(NANCY) sleuth --skip-update-check
 
-build: setup download-deps tidy-deps fmt unit-test compile
+build: setup download-deps tidy-deps fmt unit-test compile lint
 
 update-deps:
 	go get -u -t ./...
 	go mod tidy
+
+lint: $(GOLANGCI_LINT) $(GORELEASER)
+	$(GOLANGCI_LINT) run
+	$(GORELEASER) check

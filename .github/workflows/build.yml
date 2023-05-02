@@ -17,12 +17,6 @@ jobs:
         with:
           go-version-file: "go.mod"
 
-      - name: Install dependencies
-        run: |
-          go mod download
-          curl -sfL https://install.goreleaser.com/github.com/goreleaser/goreleaser.sh | sh
-
-      - name: Test
+      - name: Build
         run: |
           make build
-          ./bin/goreleaser check
