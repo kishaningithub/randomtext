@@ -36,5 +36,5 @@ dependency-check: ## Ensure dependencies have no vulnerabilities
 build: setup download-deps tidy-deps fmt unit-test compile
 
 update-deps:
-	go get -u ./...
+	go get -u -t ./...
 	go mod tidy
